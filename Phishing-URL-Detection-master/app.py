@@ -24,7 +24,7 @@ def index():
         obj = FeatureExtraction(url)
         x = np.array(obj.getFeaturesList()).reshape(1,30) 
 
-        y_pred =gbc.predict(x)[0]
+        y_pred = gbc.predict(x)[0]
         #1 is safe       
         #-1 is unsafe
         y_pro_phishing = gbc.predict_proba(x)[0,0]
