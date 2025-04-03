@@ -30,7 +30,10 @@ def index():
         y_pro_phishing = gbc.predict_proba(x)[0,0]
         y_pro_non_phishing = gbc.predict_proba(x)[0,1]
         # if(y_pred ==1 ):
-        pred = "It is {0:.2f} % safe to go ".format(y_pro_phishing*100)
+        if y_pro_phishing > y_pro_non_phishing:
+            pred = "It is unsafe to go "
+        else:
+            pred = "It is safe to go "
         return render_template('index.html',xx =round(y_pro_non_phishing,2),url=url )
     return render_template("index.html", xx =-1)
 
